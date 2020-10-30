@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+
+    <h1>Today's Plans</h1>
+
+   <table>
+
+     <tr>
+       <th>Name</th>
+       <th>MR No.</th>
+
+     </tr>
+     {% for planned_patient in today_plans %}
+
+     <tr>
+       <td>{{ planned_patient.name }}</td>
+       <td>{{ planned_patient.mr_no }}</td>
+
+       <br>
+     </tr>
+
+     {% endfor %}
+   </table>
+
+   <br>
+
+    <h1>All Patients</h1>
+    <table>
+
+      <tr>
+        <th>Name</th>
+        <th>MR No.</th>
+        <th>TT due date</th>
+        <th>PEG due date</th>
+      </tr>
+      {% for patient in all_patients %}
+
+      <tr>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.mr_no }}</td>
+        <td>{{ patient.tt_due_date }}</td>
+        <td>{{ patient.peg_due_date }}</td>
+        <br>
+      </tr>
+
+      {% endfor %}
+    </table>
+
+    <a href="{% url 'Lsp_app:get_patient' %}"> Add New Patient</a>
+
+  </body>
+</html>
