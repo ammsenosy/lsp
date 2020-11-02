@@ -1,7 +1,7 @@
-"""Lspp URL Configuration
+"""lsp_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 from . import views
 
-app_name = 'lsp_app'
+app_name = 'Lsp_app'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.all_patients, name='all_patients'),

@@ -1,0 +1,24 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Plan</title>
+  </head>
+  <body>
+    <h1>Add Plan</h1>
+    <table>
+
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_table }}
+
+          <input type="submit" value="Submit">
+      </form>
+
+    </table>
+
+    <br>
+
+<a href="{% url 'all_patients' %}"> Home </a>
+  </body>
+</html>
+
