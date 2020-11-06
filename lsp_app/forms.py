@@ -56,8 +56,8 @@ class NewLine(forms.Form):
 )
     line_name= forms.ModelChoiceField(queryset=Plan.objects, to_field_name="line_name")
     insert_date = forms.DateField(required=True)
-    type = forms.ChoiceField(required=True, choices=TT_TYPES_CHOICES)
-    size = forms.DecimalField(max_digits=3, decimal_places=2, required=True)
+    type = forms.ChoiceField(required=False, choices=TT_TYPES_CHOICES)
+    size = forms.DecimalField(max_digits=3, decimal_places=2, required=False)
     patient_name = forms.ModelChoiceField(queryset=Patient.objects, to_field_name="name")
 
     def save(self):
@@ -66,15 +66,16 @@ class NewLine(forms.Form):
 #        peg_validity= datetime.timedelta(days=180)
 
         #calculate due dates
-        cal_due_date= self.cleaned_data['insert_date'] + validity
+        #cal_due_date= self.cleaned_data['insert_date'] + validity
 #        cal_peg_due_date= self.cleaned_data['peg_insert_date'] + peg_validity
 
         #create the new record
         new_line= Line.objects.create(
+        patient= self.cleaned_data ['patient_name'],
         line_name= self.cleaned_data ['line_name'],
         insert_date= self.cleaned_data ['insert_date'],
-        due_date= cal_due_date,
+        due_date= self.cleaned_data['insert_date'] + validity,
         type= self.cleaned_data ['type'],
-        size= self.cleaned_data ['size'],
+        size= self.cleaned_data ['size']
         )
         return new_line

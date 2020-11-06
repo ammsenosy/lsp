@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from . import views
+from .models import Line
 
-app_name = 'Lsp_app'
+app_name = 'lsp_app'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.all_patients, name='all_patients'),
