@@ -59,19 +59,12 @@ def new_plan(request):
     return render(request, 'newplan.html', {'form': form})
 
 def all_patients(request):
-    all_patients= Patient.objects.all()
     all_lines= Line.objects.all()
-    
-    for patient in all_patients:
-        patient_id = patient.id
-        # ~ line = Line.objects.filter(patient_id= patient_id)
-        #due_date = line.line_name    
-  
+    #patients are called later in the template through the FK field named "patient" in Line model
     context={
-    'all_patients' : all_patients,
-    'all_lines' : all_lines,
-    # ~ 'line' : line
+    'all_lines' : all_lines
     }
+
     return render(request, 'dashboard.html', context)
 
 def today_plans(request):

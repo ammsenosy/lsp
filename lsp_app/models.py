@@ -10,6 +10,9 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def patient_mr_no(self):
+        return self.mr_no
 
 
 #    Consultant = models.CharField(max_length=300, choices=[('AK','Ahmed Elshahat Kabil'),('KH', 'Khaled AlAbdi')], blank=True, null=True)
@@ -52,3 +55,7 @@ class Line(models.Model):
 
     def __str__(self):
         return self.line_name
+
+
+    def line_due_date(self):
+        return self.due_date

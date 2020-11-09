@@ -4,7 +4,7 @@
   </head>
   <body>
 
-    <h1>Today's Plans</h1>
+  <!--   <h1>Today's Plans</h1>
 
    
       {% for planned_patient in today_plans %}
@@ -13,8 +13,8 @@
 
       {% endfor %}
     <table>
-
-      <tbody><tr>
+ -->
+    <!--   <tbody><tr>
         <th>Name</th>
         <th>MR No.</th>
 
@@ -26,7 +26,7 @@
       </tr></tbody></table>
 
     <br>
-
+ -->
     <h1>All Patients</h1>
 
   <a href="{% url 'get_patient' %}"> Add New Patient</a>
@@ -42,26 +42,18 @@
         <th>Line Type</th>
         <th>Change Due Date</th>
       </tr>
-      {% for patient in all_patients %}
-<!--
       {% for line in all_lines %}
--->
+   
       <tr>
-        <td>{{ patient.name }}</td>
-        <td>{{ patient.mr_no }}</td>
-<!--
-        <td>{{ line }}</td>
--->
-<!--
-        <td>{{ line.type }}</td>
-        <td>{{ line.due_date}}</td>
-        
--->
+        <td>{{ line.patient }}</td>
+        <td>{{ line.patient.mr_no }}</td>
+
+        <td>{{ line.line_name }}</td>
+        <td> {{ line.due_date }} </td>
+
        
       </tr>
-<!--
-      {% endfor %}
--->
+      
       {% endfor %}
       
       </tbody></table>
