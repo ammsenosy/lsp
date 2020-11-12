@@ -55,14 +55,18 @@ class NewLine(forms.Form):
     ('CH', 'Chilly')
 )
     line_name= forms.ModelChoiceField(queryset=Plan.objects, to_field_name="line_name")
-    insert_date = forms.DateField(required=True)
+    insert_date = forms.DateField(widget=forms.TextInput(attrs={'class':'datepicker'}),required=True,input_formats=['%d/%m/%Y',])
     type = forms.ChoiceField(required=False, choices=TT_TYPES_CHOICES)
     size = forms.DecimalField(max_digits=3, decimal_places=2, required=False)
     patient_name = forms.ModelChoiceField(queryset=Patient.objects, to_field_name="name")
 
     def save(self):
         #define validity time
-        validity= datetime.timedelta(days=90)
+        type_of_line= self.cleaned_data ['line_name']
+        plan = Plan.objects.get(line_name=type_of_line)
+        plan_validity= plan.time
+        # ~ validity= datetime.timedelta(days=90)
+        validity= datetime.timedelta(days=plan_validity)
 #        peg_validity= datetime.timedelta(days=180)
 
         #calculate due dates
